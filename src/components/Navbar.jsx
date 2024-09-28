@@ -12,9 +12,9 @@ const Navbar = () => {
   function deleteCookie(name) {
     document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; Secure; SameSite=None;';
     setIsAuthenticated(false);
+    toast.success("User Loggedout successfully")
   }
   
-
   const handleLogout = async () => {
     console.log(toke)
     deleteCookie("patientToken")
