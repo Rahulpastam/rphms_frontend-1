@@ -10,6 +10,16 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navigateTo = useNavigate();
 
+  function setCookie(name, value, days) {
+    let expires = "";
+    if (days) {
+      const date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+  }
+
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
@@ -27,6 +37,8 @@ const Login = () => {
           setIsAuthenticated(true);
           console.log(res.data.user)
           console.log(res.data.token)
+
+          setCookie("patientToken", res.data.token, 7);
           
           setUser(res.data.user);
 
