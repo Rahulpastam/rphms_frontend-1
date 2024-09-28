@@ -7,12 +7,15 @@ import { Context } from "../main";
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
-  const { isAuthenticated, setIsAuthenticated } = useContext(Context);
+  const { isAuthenticated, setIsAuthenticated, user, toke } = useContext(Context);
 
   const handleLogout = async () => {
     await axios
       .get("https://rp-hms-backend-1.onrender.com/api/v1/user/patient/logout", {
         withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${toke}`,
+        },
       })
       .then((res) => {
         toast.success(res.data.message);

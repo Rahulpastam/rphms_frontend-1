@@ -5,7 +5,7 @@ import { Context } from "../main";
 import { Link, useNavigate, Navigate } from "react-router-dom";
 
 const Login = () => {
-  const { isAuthenticated, setIsAuthenticated, setUser } = useContext(Context);
+  const { isAuthenticated, setIsAuthenticated, setUser, setToke } = useContext(Context);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigateTo = useNavigate();
@@ -37,7 +37,7 @@ const Login = () => {
           setIsAuthenticated(true);
           console.log(res.data.user)
           console.log(res.data.token)
-
+          setToke(res.data.token)
           setCookie("patientToken", res.data.token, 7);
           
           setUser(res.data.user);
