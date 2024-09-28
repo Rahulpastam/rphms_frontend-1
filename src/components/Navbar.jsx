@@ -11,26 +11,13 @@ const Navbar = () => {
 
   function deleteCookie(name) {
     document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; Secure; SameSite=None;';
+    setIsAuthenticated(false);
   }
   
 
   const handleLogout = async () => {
     console.log(toke)
     deleteCookie("patientToken")
-    await axios
-      .get("https://rp-hms-backend-1.onrender.com/api/v1/user/patient/logout", {
-        withCredentials: true,
-        headers: {
-          Authorization: `Bearer ${toke}`,
-        },
-      })
-      .then((res) => {
-        toast.success(res.data.message);
-        setIsAuthenticated(false);
-      })
-      .catch((err) => {
-        toast.error(err.response.data.message);
-      });
   };
 
   const navigateTo = useNavigate();
