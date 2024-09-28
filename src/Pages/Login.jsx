@@ -15,7 +15,7 @@ const Login = () => {
     try {
       await axios
         .post(
-          "http://localhost:4000/api/v1/user/login",
+          "https://rp-hms-backend-1.onrender.com/api/v1/user/login",
           { email, password, role: "Patient" },
           {
             withCredentials: true,
@@ -27,6 +27,7 @@ const Login = () => {
           setIsAuthenticated(true);
           console.log(res.data.user)
           console.log(res.data.token)
+          
           setUser(res.data.user);
 
           navigateTo("/");
