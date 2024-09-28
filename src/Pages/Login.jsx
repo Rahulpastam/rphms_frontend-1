@@ -35,13 +35,11 @@ const Login = () => {
         .then((res) => {
           toast.success(res.data.message);
           setIsAuthenticated(true);
-          console.log(res.data.user)
-          console.log(res.data.token)
+          // console.log(res.data.user)
+          // console.log(res.data.token)
           setToke(res.data.token)
           setCookie("patientToken", res.data.token, 7);
-          
           setUser(res.data.user);
-
           navigateTo("/");
           setEmail("");
           setPassword("");

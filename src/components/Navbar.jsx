@@ -16,7 +16,7 @@ const Navbar = () => {
   }
   
   const handleLogout = async () => {
-    console.log(toke)
+    // console.log(toke)
     deleteCookie("patientToken")
   };
 
