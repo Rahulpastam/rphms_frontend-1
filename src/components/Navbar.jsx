@@ -9,8 +9,14 @@ const Navbar = () => {
   const [show, setShow] = useState(false);
   const { isAuthenticated, setIsAuthenticated, user, toke } = useContext(Context);
 
+  function deleteCookie(name) {
+    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; Secure; SameSite=None;';
+  }
+  
+
   const handleLogout = async () => {
     console.log(toke)
+    deleteCookie(toke)
     await axios
       .get("https://rp-hms-backend-1.onrender.com/api/v1/user/patient/logout", {
         withCredentials: true,
