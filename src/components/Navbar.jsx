@@ -10,6 +10,7 @@ const Navbar = () => {
   const { isAuthenticated, setIsAuthenticated, user, toke } = useContext(Context);
 
   const handleLogout = async () => {
+    console.log(toke)
     await axios
       .get("https://rp-hms-backend-1.onrender.com/api/v1/user/patient/logout", {
         withCredentials: true,
