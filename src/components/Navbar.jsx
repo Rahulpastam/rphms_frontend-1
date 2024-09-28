@@ -16,7 +16,7 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     console.log(toke)
-    deleteCookie(toke)
+    deleteCookie("patientToken")
     await axios
       .get("https://rp-hms-backend-1.onrender.com/api/v1/user/patient/logout", {
         withCredentials: true,
